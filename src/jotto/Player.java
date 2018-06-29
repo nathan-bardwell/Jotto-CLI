@@ -1,9 +1,12 @@
 package jotto;
 
+import java.util.Scanner;
+
 public class Player {
 	
 	private String name;
 	private boolean isTurn;
+	private boolean isWinner = false;
 	private Word playerWord;
 	private Word playerGuess;
 	
@@ -11,6 +14,12 @@ public class Player {
 		this.name = name;
 		this.playerWord = playerWord;
 		isTurn = false;
+	}
+	
+	public boolean isPlayersTurn() {
+		guess();
+		isTurn = true;
+		return isTurn;
 	}
 	
 	public Word getPlayerGuess() {
@@ -29,10 +38,18 @@ public class Player {
 		return this.name;
 	}
 	
-	public void isPlayersTurn() {
-		isTurn = true;
+	public boolean hasWon() {
+		isWinner = true;
+		return isWinner;
 	}
 	
+	public String guess() {
+		Scanner input = new Scanner(System.in);
+		isTurn = true;
+		System.out.println(name.toUpperCase() + ", ENTER YOUR GUESS");
+		String guess = input.nextLine();
+		return guess;
+	}
 	
 
 }

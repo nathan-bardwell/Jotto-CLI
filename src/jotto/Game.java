@@ -1,18 +1,19 @@
 package jotto;
 
+import java.util.HashMap;
+
 public class Game {
 	
-	private boolean hasWinner = false;
 	
-	public Game(Player player1, Player player2) {
-		player1.isPlayersTurn();
+	public Game() {
+		
 		
 	}
 	
 	public void playGame() {
-		while (!hasWinner) {
-			
-		}
+//		while (!player1.hasWon() && !player2.hasWon()) {
+//			
+//		}
 	}
 	
 	public void gameOver() {
@@ -22,5 +23,21 @@ public class Game {
 	public void guessWord() {
 		
 	}
+	
+	public int compareWords(String guess, Word secret) {
+		int correctLetters = 0;
+	   
+	    for (int i = 0; i < guess.length(); i++) {
+	    		char x = guess.charAt(i);
+	    		if (secret.getMap().containsKey(x)) {
+	    			correctLetters++;
+	    			secret.getMap().replace(x, secret.getMap().get(x) + 1);
+	    		}
+	    }
+	   
+		 return correctLetters;
+	 }
+	
+	
 
 }

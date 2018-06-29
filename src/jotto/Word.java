@@ -1,16 +1,17 @@
 package jotto;
 
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
+
 
 public class Word {
 	
-	 private Map<Character, Integer> wordMap;
+	 private HashMap<Character, Integer> wordMap;
 	 private int correctLetters = 0;
 	 
 	 public Word(String word) {
-		 wordMap = new TreeMap<Character, Integer>();
+		 wordMap = new HashMap<Character, Integer>();
 		 
 		 for (int i = 0; i < word.length(); i++) {
 			 wordMap.put(word.charAt(i), 0);
@@ -25,12 +26,9 @@ public class Word {
 			}
 		}
 	 
-	 private int getCorrectLetters() {
-		 return correctLetters;
-	 }
+	public HashMap<Character, Integer> getMap() {
+		return wordMap;
+	}
 	 
-	 private void findCorrectLetters() {
-		 
-	 }
 
 }
