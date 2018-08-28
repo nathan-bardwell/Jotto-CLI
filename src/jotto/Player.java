@@ -58,13 +58,13 @@ public class Player {
 		while (!goodWord) {
 			guess = "";
 			Scanner input = new Scanner(System.in);
-			System.out.print(name.toUpperCase() + ", ENTER YOUR GUESS >>>>> ");
+			System.out.print("\n" + name.toUpperCase() + ", ENTER YOUR GUESS >>>>> ");
 			guess = guess + input.nextLine();
 			Word guessWord = new Word(guess);
 			if (guessWord.verifyWord(guess)) {
 				goodWord = true;
 			} else {
-				System.out.println("'" + guess + "' " + "is not a playable word. Please try again.");
+				System.out.println("\n'" + guess.toUpperCase() + "' " + " is not a playable word. Please try again.\n");
 				goodWord = false;
 			}
 		}

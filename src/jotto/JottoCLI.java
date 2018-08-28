@@ -39,12 +39,19 @@ public class JottoCLI {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			if (choice.equals(MAIN_MENU_OPTION_START_GAME)) {
+				clearScreen();
 				game = new Game(application.setUpPlayer1(), application.setUpPlayer2());
 				game.playGame();
 				application.playAgain();
 			} else if (choice.equals(MAIN_MENU_OPTION_GAME_RULES)) {
+				Scanner input = new Scanner(System.in);
+				clearScreen();
 				game.displayRules();
+				System.out.println("\nPress ENTER to return to main menu");
+				input.nextLine();
+				clearScreen();
 			} else if (choice.equals(MAIN_MENU_OPTION_EXIT)) {
+				System.out.print("\033[H\033[2J");
 				System.exit(0);
 			}
 		}
@@ -57,9 +64,11 @@ public class JottoCLI {
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(PLAY_AGAIN_OPTIONS);
 			if (choice.equals(PLAY_AGAIN_OPTION_PLAY_AGAIN)) {
+				clearScreen();
 				game = new Game(application.setUpPlayer1(), application.setUpPlayer2());
 				game.playGame();
 			} else if (choice.equals(PLAY_AGAIN_OPTION_EXIT)) {
+				System.out.print("\033[H\033[2J");
 				System.exit(0);
 			}
 		}
@@ -79,7 +88,7 @@ public class JottoCLI {
 				player1 = new Player(userName, player1Word);
 				goodWord = true;
 			} else {
-				System.out.println("'" + userWord + "' " + "is not a playable word. Please try again.");
+				System.out.println("\n'" + userWord + "' " + " is not a playable word. Please try again.");
 				goodWord = false;
 			}
 		}
@@ -100,20 +109,21 @@ public class JottoCLI {
 				player2 = new Player(userName, player2Word);
 				goodWord = true;
 			} else {
-				System.out.println("'" + userWord + "' " + "is not a playable word. Please try again.");
+				System.out.println("\n'" + userWord + "' " + " is not a playable word. Please try again.");
 				goodWord = false;
 			}
 		}
 		return player2;
 	}
 	
-	private void clearScreen() {
+	public static void clearScreen() {
 		System.out.print("\033[H\033[2J");
 		displayGameBanner();
 		System.out.println("\n\n\n");
 	}
+	
 
-	private void displayGameBanner() {
+	private static void displayGameBanner() {
 		System.out.println();
 		System.out.println("**************************************************************");
 		System.out.println("*            888888          888    888                      *");
